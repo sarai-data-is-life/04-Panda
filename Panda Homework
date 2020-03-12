@@ -1,0 +1,31 @@
+'Bottom Performing Schools (By Passing Rate)
+      ' 1. Bottom Performing Schools (By Passing Rate)
+          'a. Create a table that highlights the bottom 5 performing schools based on Overall Passing Rate. Include all of the same metrics as above.
+      ' 2. Math Scores by Grade**
+          'a. Create a table that lists the average Math Score for students of each grade level (9th, 10th, 11th, 12th) at each school.
+
+'Reading Scores by Grade
+      ' 3. Create a table that lists the average Reading Score for students of each grade level (9th, 10th, 11th, 12th) at each school.
+      ' 4.Create a table that breaks down school performances based on average Spending Ranges (Per Student). Use 4 reasonable bins to group school spending. Include in the table each of the following
+          'a. Average Math Score
+          'b. Average Reading Score
+          'c. % Passing Math
+          'd. % Passing Reading
+          'e. Overall Passing Rate (Average of the above two)
+'Scores by School Size
+      ' 5. Repeat the above breakdown, but this time group schools based on a reasonable approximation of school size (Small, Medium, Large).
+'Scores by School Type
+      ' 6. Repeat the above breakdown, but this time group schools based on school type (Charter vs. District).
+
+# Dependencies and Setup
+import pandas as pd
+
+# File to Load (Remember to Change These)
+file_to_load = "Resources/purchase_data.csv"
+
+# Read Purchasing File and store into Pandas data frame
+purchase_data = pd.read_csv(Resources/purchase_data.csv)  
+purchase_data.head()
+
+
+
