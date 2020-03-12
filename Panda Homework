@@ -17,18 +17,23 @@
 'Scores by School Type
       ' 6. Repeat the above breakdown, but this time group schools based on school type (Charter vs. District).
 
+
 # Dependencies and Setup
 import pandas as pd
+import numpy as np
 
 # File to Load (Remember to Change These)
 file_to_load = "Resources/purchase_data.csv"
 
 # Read Purchasing File and store into Pandas data frame
-Grade_data = pd.read_csv(Resources/purchase_data.csv)  
-Grade_data.head()
+purchase_data = pd.read_csv(file_to_load)
+
+purchase_data.head()
 
 #check for missing/na
 purchase_data.count()
+
+
 #display/set to variable
 players = len(purchase_data['SN'].unique())
 
@@ -57,7 +62,6 @@ summary_df = pd.DataFrame({
 },index=[0])
 summary_df
 
-
 #find unique SN within df to make sure the same player is not recordered twice
 gender = purchase_data.drop_duplicates('SN')
 
@@ -74,6 +78,8 @@ gender_df = pd.DataFrame({
 })
 gender_df
 
+
+#purchases by each gender
 gender_purchase_data = purchase_data.groupby('Gender')
 gender_purchase_count = gender_purchase_data['Gender'].count()
 gender_purchase_count #test works
@@ -94,11 +100,12 @@ gender_purchase_data_df = pd.DataFrame({
 })
 gender_purchase_data_df
 
-:
+
 #establish bins
 bins = [0, 9, 14, 19, 24, 29, 34, 39, 400]
 
 group_labels = ['<10', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40+']
+
 
 #categorize the existing players using the age bins
 purchase_data['age_group'] =  pd.cut(purchase_data['Age'], bins, labels=group_labels)
@@ -131,6 +138,7 @@ purchasing_age_analysis = pd.DataFrame({
 })
 purchasing_age_analysis
 
+
 #Count purchases made by unique SN
 spender_purchase = purchase_data["SN"].value_counts()
 
@@ -154,6 +162,7 @@ big_spenders_sorted["Total Purchase Value"] = big_spenders_sorted["Total Purchas
 
 #print top 5
 big_spenders_sorted[:5]
+
 
 #isolate columned needed
 popular_items = purchase_data[['Item ID', 'Item Name', 'Price']]
@@ -182,7 +191,6 @@ popular_items_sorted["Total Purchase Value"]= popular_items_sorted["Total Purcha
 #print the DF
 popular_items_sorted[:5]
 
-
 #re-sort above table by total purchase
 popular_items_sorted_purchase = popular_items.sort_values("Total Purchase Value", ascending= False)
 popular_items_sorted_purchase["Item Price"]= popular_items_sorted_purchase["Item Price"].map("${:.2f}".format)
@@ -190,6 +198,3 @@ popular_items_sorted_purchase["Total Purchase Value"]= popular_items_sorted_purc
 
 #print the DF
 popular_items_sorted_purchase[:5]
-
-
-
